@@ -2,18 +2,21 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/rview"
+    android:background="@drawable/j"
+    android:visibility="visible"
     tools:context=".MainActivity">
+
     <TextView
         android:id="@+id/tv_result"
-        android:text="Best Result : 0"
-        android:textColor="#FFE500"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_centerInParent="true" />
+        android:layout_centerInParent="true"
+        android:text="Best Result : 0"
+        android:textColor="#FFE500" />
 
     <TextView
         android:id="@+id/tv_taps"
@@ -41,13 +44,27 @@
         android:textColor="#FFE500" />
 
 
-    <Button
+    <ImageButton
         android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="640px"
+        android:layout_height="640px"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="480dp"
-        android:padding="16dp"
-        android:text="click me" />
+        android:layout_marginLeft="200px"
+        android:layout_marginTop="640px"
+        android:layout_marginRight="200px"
+        android:layout_marginBottom="640px"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        android:src="@drawable/planet1" />
+
+    <ImageButton
+        android:id="@+id/back"
+        android:layout_width="240px"
+        android:layout_height="240px"
+        android:layout_marginLeft="50px"
+        android:layout_marginTop="240px"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        android:src="@drawable/play" />
 
 </RelativeLayout>
