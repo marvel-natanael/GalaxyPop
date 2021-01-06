@@ -11,37 +11,52 @@
 
     <TextView
         android:id="@+id/tv_result"
+        android:fontFamily="@font/montserratblack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
         android:text="Best Result : 0"
-        android:textColor="#FFE500" />
+        android:gravity="center"
+        android:lines="2"
+        android:layout_marginTop="10dp"
+        android:textSize="24sp"
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:id="@+id/tv_taps"
+        android:fontFamily="@font/montserratblack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerVertical="true"
-        android:layout_marginTop="28dp"
-        android:text="Taps required: 10"
-        android:textColor="#FFE500" />
+        android:layout_marginTop="220dp"
+        android:textSize="24sp"
+        android:layout_centerHorizontal="true"
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:id="@+id/tv_info"
+        android:fontFamily="@font/montserratblack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Start Tapping!"
-        android:textColor="#FFE500" />
+        android:gravity="center"
+        android:text="Tap Planet To Start"
+        android:textSize="24sp"
+        android:layout_marginTop="420dp"
+        android:textColor="#FFFFFF"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/tv_lose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="320dp"
-        android:textColor="#FFE500" />
+        android:layout_marginTop="420dp"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:fontFamily="@font/montserratblack"
+        android:textColor="#FFFFFF" />
 
 
     <ImageButton
@@ -59,12 +74,12 @@
 
     <ImageButton
         android:id="@+id/back"
-        android:layout_width="240px"
-        android:layout_height="240px"
+        android:layout_width="120px"
+        android:layout_height="120px"
         android:layout_marginLeft="50px"
-        android:layout_marginTop="240px"
+        android:layout_marginTop="64px"
         android:background="@null"
         android:scaleType="fitCenter"
-        android:src="@drawable/play" />
+        android:src="@drawable/back" />
 
 </RelativeLayout>

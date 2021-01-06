@@ -3,6 +3,7 @@ package com.example.tapgamev2;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -16,7 +17,7 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
 
     View screenView;
-    ImageButton clickMe;
+    ImageButton clickMe,backButton;
     int[] images;
     int[] planet;
     TextView tv_result, tv_info, tv_lose, tv_taps;
@@ -27,8 +28,6 @@ public class MainActivity extends AppCompatActivity {
 
     boolean gameStarted = false;
     CountDownTimer timer;
-    long leftLimit = 10000L;
-    long rightLimit = 60000L;
 
     long finishTime=10000;
 
@@ -42,9 +41,10 @@ public class MainActivity extends AppCompatActivity {
         images = new int[]{R.drawable.a, R.drawable.b, R.drawable.c, R.drawable.d, R.drawable.f, R.drawable.g, R.drawable.h};
         planet = new int[]{R.drawable.planet1, R.drawable.planet2};
         screenView = findViewById(R.id.rview);
-        //screenView.setBackgroundResource(R.drawable.background);
+
         clickMe = (ImageButton) findViewById(R.id.button);
-        //clickMe.setImageResource(R.drawable.planet1);
+        backButton= (ImageButton) findViewById(R.id.back);
+
         tv_result = findViewById(R.id.tv_result);
         tv_info = findViewById(R.id.tv_info);
         tv_lose = findViewById(R.id.tv_lose);
@@ -53,20 +53,37 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences preferences = getSharedPreferences("PREFS", 0);
         bestResult = preferences.getInt("highScore", 0);
 
-        tv_result.setText("Best Result " + bestResult);
+        tv_result.setText("Best Result\n" + bestResult);
+
+        backButton.setOnClickListener (new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                Intent menu = new Intent(MainActivity.this, MainMenu.class);
+                        startActivity(menu);
+            }
+        });
+
 
         clickMe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(gameStarted)
                 {
+                    tv_info.setVisibility(View.VISIBLE);
+
                     tv_info.setText("Current Taps: " + (currentTaps+1));
-                    tv_taps.setText("Taps required: "+ tapsToWin);
+                    tv_taps.setText("Taps required: "+ (tapsToWin));
                     tv_lose.setVisibility(View.INVISIBLE);
                     currentTaps++;
 
-                    if(currentTaps>=tapsToWin)
+                    if(currentTaps==tapsToWin)
                     {
+                        currentTaps = 0;
+                        checkPoint+=1;
+                        tapsToWin=(tapsToWin + (checkPoint+1)*(checkPoint+2));
+                        tv_taps.setText("Taps required: "+ (tapsToWin));
+                        finishTime = (checkPoint*10000)^2;
                         int aryLength = images.length;
                         Random random = new Random();
                         final int rNum = random.nextInt(aryLength);
@@ -75,9 +92,6 @@ public class MainActivity extends AppCompatActivity {
                         clickMe.setImageResource(imgID);
                         clickMe.requestLayout();
                         screenView.setBackground(ContextCompat.getDrawable(getApplicationContext(), images[rNum]));
-                        checkPoint+=2;
-                        tapsToWin*=checkPoint;
-                        finishTime = (finishTime/2) * checkPoint;
                         timer.cancel();
                         startTime();
                     }
@@ -86,6 +100,15 @@ public class MainActivity extends AppCompatActivity {
                 {
                     gameStarted = true;
                     startTime();
+                    tv_lose.setVisibility(View.INVISIBLE);
+                    if(gameStarted) {
+                        tv_info.setVisibility(View.VISIBLE);
+                        tv_taps.setVisibility(View.VISIBLE);
+                        tv_info.setText("Current Taps: " + (currentTaps + 1));
+                        tv_taps.setText("Taps required: " + (tapsToWin));
+                        tv_lose.setVisibility(View.INVISIBLE);
+                        currentTaps++;
+                    }
                 }
             }
         });
@@ -98,12 +121,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTick(long millisUntilFinished) {
                 long timeTillEnd = (millisUntilFinished / 1000) + 1;
-                tv_result.setText("Time Remaining: " + timeTillEnd);
+                tv_result.setText("Time Remaining\n" + timeTillEnd);
             }
 
             @Override
             public void onFinish() {
                 gameStarted = false;
+                tv_info.setVisibility(View.INVISIBLE);
                 tv_lose.setVisibility(View.VISIBLE);
                 tv_lose.setText("Game Over\nTap button to retry!");
 
@@ -115,12 +139,11 @@ public class MainActivity extends AppCompatActivity {
                     editor.apply();
                 }
 
-                tv_result.setText("Best Result: " + bestResult);
+                tv_result.setText("Best Result\n" + bestResult);
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        tv_info.setText("Start Tapping");
-                        tv_taps.setText("Taps required: 10");
+                        tv_taps.setVisibility(View.INVISIBLE);
                         currentTaps = 0;
                         tapsToWin = 10;
                         checkPoint = 1;

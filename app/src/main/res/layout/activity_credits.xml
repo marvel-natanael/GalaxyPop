@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/j"
+    tools:context=".credits">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="720px"
+        android:layout_height="480px"
+        android:layout_marginTop="120px"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/logo" />
+
+    <ImageButton
+        android:id="@+id/back"
+        android:layout_width="120px"
+        android:layout_height="120px"
+        android:layout_marginLeft="50px"
+        android:layout_marginTop="64px"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        android:src="@drawable/back" />
+
+
+    <TextView
+        android:id="@+id/sasa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lines="2"
+        android:text="4210191006\nKhonsa Nadziroh"
+        android:layout_marginTop="260dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:fontFamily="@font/montserratblack"
+        android:textColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/joane"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lines="2"
+        android:text="4210191016\nJoane Vanessa"
+        android:layout_marginTop="380dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:fontFamily="@font/montserratblack"
+        android:textColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/mrvl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lines="2"
+        android:text="4210191013\nMarvel Natanael"
+        android:layout_marginTop="320dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:fontFamily="@font/montserratblack"
+        android:textColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/dosen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lines="2"
+        android:text="Dosen Pengampu\nZulhaydar Fairozal Akbar S.ST., M.Sc."
+        android:layout_marginTop="500dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:fontFamily="@font/montserratblack"
+        android:textColor="#FFFFFF" />
+
+    <ImageView
+        android:layout_width="80px"
+        android:layout_height="80px"
+        android:src="@drawable/gt"
+        android:layout_marginTop="560dp"
+        android:layout_marginLeft="220dp"
+        android:background="@android:color/white" />
+    <ImageView
+        android:layout_width="80px"
+        android:layout_height="80px"
+        android:src="@drawable/pens"
+        android:layout_marginTop="560dp"
+        android:layout_marginLeft="170dp"
+        android:background="@android:color/white" />
+
+    <TextView
+        android:id="@+id/matkul"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lines="3"
+        android:text="Workshop Produksi Game III\nD4 Teknologi Game PENS\nSemester Ganjil 2020"
+        android:layout_marginTop="600dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="12sp"
+        android:gravity="center"
+        android:fontFamily="@font/montserratblack"
+        android:textColor="#FFFFFF" />
+
+
+</RelativeLayout>
