@@ -72,14 +72,36 @@
         android:scaleType="fitCenter"
         android:src="@drawable/planet1" />
 
+
     <ImageButton
-        android:id="@+id/back"
+        android:id="@+id/pause"
         android:layout_width="120px"
         android:layout_height="120px"
         android:layout_marginLeft="50px"
         android:layout_marginTop="64px"
         android:background="@null"
         android:scaleType="fitCenter"
-        android:src="@drawable/back" />
+        android:src="@drawable/pause" />
+
+    <ImageButton
+        android:id="@+id/home"
+        android:layout_width="120px"
+        android:layout_height="120px"
+        android:layout_marginLeft="50px"
+        android:layout_marginTop="192px"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        android:src="@drawable/home" />
+
+    <ImageButton
+        android:id="@+id/sound"
+        android:layout_width="120px"
+        android:layout_height="120px"
+        android:layout_marginLeft="50px"
+        android:layout_marginTop="320px"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        android:src="@drawable/sound" />
+
 
 </RelativeLayout>

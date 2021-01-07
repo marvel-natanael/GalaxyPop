@@ -5,6 +5,7 @@ import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -17,7 +18,7 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
 
     View screenView;
-    ImageButton clickMe,backButton;
+    ImageButton clickMe,home,sound,pause;
     int[] images;
     int[] planet;
     TextView tv_result, tv_info, tv_lose, tv_taps;
@@ -27,14 +28,18 @@ public class MainActivity extends AppCompatActivity {
     int tapsToWin=10;
 
     boolean gameStarted = false;
+    boolean isPaused=false;
+
     CountDownTimer timer;
 
     long finishTime=10000;
+    long timeEnd;
 
     int bestResult = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        final MediaPlayer buttonSound = MediaPlayer.create(this, R.raw.butt);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -43,19 +48,57 @@ public class MainActivity extends AppCompatActivity {
         screenView = findViewById(R.id.rview);
 
         clickMe = (ImageButton) findViewById(R.id.button);
-        backButton= (ImageButton) findViewById(R.id.back);
+        home = (ImageButton) findViewById(R.id.home);
+        pause = (ImageButton) findViewById(R.id.pause);
+        sound = (ImageButton) findViewById(R.id.sound);
 
         tv_result = findViewById(R.id.tv_result);
         tv_info = findViewById(R.id.tv_info);
         tv_lose = findViewById(R.id.tv_lose);
         tv_taps = findViewById(R.id.tv_taps);
 
+        sound.setVisibility(View.INVISIBLE);
+        home.setVisibility(View.INVISIBLE);
+
         SharedPreferences preferences = getSharedPreferences("PREFS", 0);
         bestResult = preferences.getInt("highScore", 0);
 
         tv_result.setText("Best Result\n" + bestResult);
 
-        backButton.setOnClickListener (new View.OnClickListener()
+        pause.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(gameStarted)
+                {
+                    if(!isPaused)
+                    {
+                        isPaused=true;
+                        pause();
+                    }
+                    else
+                    {
+                        isPaused=false;
+                        resume();
+
+                    }
+                }
+                else if(!isPaused)
+                {
+                    showPause();
+                    isPaused=true;
+                    clickMe.setEnabled(false);
+                }
+                else
+                {
+                    hidePause();
+                    isPaused=false;
+                    clickMe.setEnabled(true);
+                }
+
+            }
+        });
+
+        home.setOnClickListener (new View.OnClickListener()
         {
             @Override
             public void onClick(View v) {
@@ -68,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
         clickMe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 if(gameStarted)
                 {
                     tv_info.setVisibility(View.VISIBLE);
@@ -93,13 +137,13 @@ public class MainActivity extends AppCompatActivity {
                         clickMe.requestLayout();
                         screenView.setBackground(ContextCompat.getDrawable(getApplicationContext(), images[rNum]));
                         timer.cancel();
-                        startTime();
+                        startTime(finishTime);
                     }
                 }
                 else
                 {
                     gameStarted = true;
-                    startTime();
+                    startTime(finishTime);
                     tv_lose.setVisibility(View.INVISIBLE);
                     if(gameStarted) {
                         tv_info.setVisibility(View.VISIBLE);
@@ -115,14 +159,18 @@ public class MainActivity extends AppCompatActivity {
 
     };
 
-    private void startTime()
+
+    private void startTime(long finishTime)
     {
         timer = new CountDownTimer(finishTime, 1000) {
+
             @Override
             public void onTick(long millisUntilFinished) {
-                long timeTillEnd = (millisUntilFinished / 1000) + 1;
+                timeEnd = millisUntilFinished;
+                long timeTillEnd = (millisUntilFinished / 1000+1);
                 tv_result.setText("Time Remaining\n" + timeTillEnd);
             }
+
 
             @Override
             public void onFinish() {
@@ -151,6 +199,35 @@ public class MainActivity extends AppCompatActivity {
                 }, 0000);
             }
         }.start();
+    }
+
+
+    public void showPause()
+    {
+        pause.setImageResource(R.drawable.back);
+        sound.setVisibility(View.VISIBLE);
+        home.setVisibility(View.VISIBLE);
+    }
+
+    public void hidePause()
+    {
+        pause.setImageResource(R.drawable.pause);
+        sound.setVisibility(View.INVISIBLE);
+        home.setVisibility(View.INVISIBLE);
+    }
+
+    public void pause()
+    {
+        timer.cancel();
+        showPause();
+        clickMe.setEnabled(false);
+    }
+
+    public void resume()
+    {
+        startTime(timeEnd);
+        hidePause();
+        clickMe.setEnabled(true);
     }
 
 }
