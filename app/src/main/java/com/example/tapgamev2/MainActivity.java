@@ -39,12 +39,14 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        final MediaPlayer buttonSound = MediaPlayer.create(this, R.raw.butt);
+        final MediaPlayer bgSound = MediaPlayer.create(this, R.raw.galaxy);
+        final MediaPlayer buttonSound = MediaPlayer.create(this, R.raw.btn);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         images = new int[]{R.drawable.a, R.drawable.b, R.drawable.c, R.drawable.d, R.drawable.f, R.drawable.g, R.drawable.h};
-        planet = new int[]{R.drawable.planet1, R.drawable.planet2};
+        planet = new int[]{R.drawable.planet1, R.drawable.planet2,R.drawable.planet3,R.drawable.planet4,R.drawable.planet5,};
         screenView = findViewById(R.id.rview);
 
         clickMe = (ImageButton) findViewById(R.id.button);
@@ -65,9 +67,29 @@ public class MainActivity extends AppCompatActivity {
 
         tv_result.setText("Best Result\n" + bestResult);
 
+
+        sound.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(Music.soundOn)
+                {
+                    sound.setImageResource(R.drawable.mute);
+                    Music.player.pause();
+                    Music.soundOn=false;
+                }
+                else
+                {
+                    sound.setImageResource(R.drawable.sound);
+                    Music.player.start();
+                    Music.soundOn=true;
+                }
+            }
+        });
+
         pause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                buttonSound.start();
                 if(gameStarted)
                 {
                     if(!isPaused)
@@ -131,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
                         int aryLength = images.length;
                         Random random = new Random();
                         final int rNum = random.nextInt(aryLength);
-                        int imgNo=(int) (Math.random() * 2 + 1);
+                        int imgNo=(int) (Math.random() * 5 + 1);
                         int imgID = getResources().getIdentifier("planet"+ imgNo, "drawable", getPackageName());
                         clickMe.setImageResource(imgID);
                         clickMe.requestLayout();

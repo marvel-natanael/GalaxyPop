@@ -1,49 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/j"
-    android:visibility="visible"
+    android:orientation="vertical"
+    android:layout_gravity="center_vertical"
     tools:context=".MainActivity">
+
+
+    <ImageButton
+        android:id="@+id/pause"
+        android:layout_width="120px"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_height="120px"
+        android:background="@android:color/transparent"
+        android:scaleType="centerInside"
+        android:src="@drawable/pause" />
+    <ImageButton
+        android:id="@+id/home"
+        android:layout_width="120px"
+        android:layout_height="120px"
+        android:layout_marginLeft="10dp"
+        android:background="@null"
+        android:scaleType="centerInside"
+        android:src="@drawable/home" />
+
+    <ImageButton
+        android:id="@+id/sound"
+        android:layout_width="120px"
+        android:layout_height="120px"
+        android:layout_marginLeft="10dp"
+        android:background="@null"
+        android:scaleType="centerInside"
+        android:src="@drawable/sound" />
 
     <TextView
         android:id="@+id/tv_result"
-        android:fontFamily="@font/montserratblack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:fontFamily="@font/montserratblack"
+        android:scaleType="centerInside"
+        android:layout_marginTop="10dp"
         android:text="Best Result : 0"
         android:gravity="center"
-        android:lines="2"
-        android:layout_marginTop="10dp"
-        android:textSize="24sp"
-        android:textColor="#FFFFFF" />
+        android:textColor="#FFFFFF"
+        android:textSize="24sp" />
 
     <TextView
         android:id="@+id/tv_taps"
         android:fontFamily="@font/montserratblack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="220dp"
+        android:layout_gravity="center"
+        android:scaleType="centerInside"
+        android:gravity="center"
         android:textSize="24sp"
-        android:layout_centerHorizontal="true"
         android:textColor="#FFFFFF" />
+
+    <ImageButton
+        android:id="@+id/button"
+        android:layout_width="640px"
+        android:layout_height="640px"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:background="@android:color/transparent"
+        android:scaleType="centerInside"
+        android:src="@drawable/planet1" />
 
     <TextView
         android:id="@+id/tv_info"
         android:fontFamily="@font/montserratblack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:gravity="center"
-        android:text="Tap Planet To Start"
+        android:text="Tap Planet To Start!"
         android:textSize="24sp"
-        android:layout_marginTop="420dp"
+        android:layout_marginTop="5dp"
         android:textColor="#FFFFFF"
         android:layout_centerHorizontal="true" />
 
@@ -52,56 +90,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="420dp"
         android:textSize="24sp"
         android:gravity="center"
+        android:layout_gravity="center"
         android:fontFamily="@font/montserratblack"
         android:textColor="#FFFFFF" />
 
 
-    <ImageButton
-        android:id="@+id/button"
-        android:layout_width="640px"
-        android:layout_height="640px"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="200px"
-        android:layout_marginTop="640px"
-        android:layout_marginRight="200px"
-        android:layout_marginBottom="640px"
-        android:background="@null"
-        android:scaleType="fitCenter"
-        android:src="@drawable/planet1" />
 
 
-    <ImageButton
-        android:id="@+id/pause"
-        android:layout_width="120px"
-        android:layout_height="120px"
-        android:layout_marginLeft="50px"
-        android:layout_marginTop="64px"
-        android:background="@null"
-        android:scaleType="fitCenter"
-        android:src="@drawable/pause" />
 
-    <ImageButton
-        android:id="@+id/home"
-        android:layout_width="120px"
-        android:layout_height="120px"
-        android:layout_marginLeft="50px"
-        android:layout_marginTop="192px"
-        android:background="@null"
-        android:scaleType="fitCenter"
-        android:src="@drawable/home" />
-
-    <ImageButton
-        android:id="@+id/sound"
-        android:layout_width="120px"
-        android:layout_height="120px"
-        android:layout_marginLeft="50px"
-        android:layout_marginTop="320px"
-        android:background="@null"
-        android:scaleType="fitCenter"
-        android:src="@drawable/sound" />
-
-
-</RelativeLayout>
+</LinearLayout>
