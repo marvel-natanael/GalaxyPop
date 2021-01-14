@@ -5,7 +5,7 @@
     android:id="@+id/rview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/j"
+    android:background="@drawable/bg2"
     android:orientation="vertical"
     android:layout_gravity="center_vertical"
     tools:context=".MainActivity">
@@ -13,27 +13,30 @@
 
     <ImageButton
         android:id="@+id/pause"
-        android:layout_width="120px"
-        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_height="120px"
+        android:layout_marginTop="10dp"
         android:background="@android:color/transparent"
         android:scaleType="centerInside"
         android:src="@drawable/pause" />
+
     <ImageButton
         android:id="@+id/home"
-        android:layout_width="120px"
-        android:layout_height="120px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
         android:background="@null"
         android:scaleType="centerInside"
         android:src="@drawable/home" />
 
     <ImageButton
         android:id="@+id/sound"
-        android:layout_width="120px"
-        android:layout_height="120px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
         android:background="@null"
         android:scaleType="centerInside"
         android:src="@drawable/sound" />
@@ -64,10 +67,10 @@
 
     <ImageButton
         android:id="@+id/button"
-        android:layout_width="640px"
-        android:layout_height="640px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="30dp"
         android:background="@android:color/transparent"
         android:scaleType="centerInside"
         android:src="@drawable/planet1" />
@@ -81,7 +84,7 @@
         android:gravity="center"
         android:text="Tap Planet To Start!"
         android:textSize="24sp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:textColor="#FFFFFF"
         android:layout_centerHorizontal="true" />
 

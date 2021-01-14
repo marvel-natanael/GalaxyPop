@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -45,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        images = new int[]{R.drawable.a, R.drawable.b, R.drawable.c, R.drawable.d, R.drawable.f, R.drawable.g, R.drawable.h};
-        planet = new int[]{R.drawable.planet1, R.drawable.planet2,R.drawable.planet3,R.drawable.planet4,R.drawable.planet5,};
+        images = new int[]{R.drawable.bg1,R.drawable.bg2,R.drawable.bg3,R.drawable.bg4};
+        planet = new int[]{R.drawable.planet1, R.drawable.planet2,R.drawable.planet3,R.drawable.planet4,R.drawable.planet5,R.drawable.planet6,R.drawable.planet7,R.drawable.planet8,};
         screenView = findViewById(R.id.rview);
 
         clickMe = (ImageButton) findViewById(R.id.button);
@@ -74,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                 if(Music.soundOn)
                 {
                     sound.setImageResource(R.drawable.mute);
-                    Music.player.pause();
+                    Music.player.stop();
                     Music.soundOn=false;
                 }
                 else
@@ -129,11 +130,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         clickMe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                clickMe.startAnimation(AnimationUtils.loadAnimation(MainActivity.this,R.anim.shake));
                 if(gameStarted)
                 {
                     tv_info.setVisibility(View.VISIBLE);
