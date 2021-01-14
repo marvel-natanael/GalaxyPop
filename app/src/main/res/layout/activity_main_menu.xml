@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/j"
+    android:orientation="vertical"
+    android:layout_gravity="center_vertical"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center"
+        android:src="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/tv_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tap To Play!"
+        android:textSize="24sp"
+        android:layout_marginTop="80dp"
+        android:layout_gravity="center"
+        android:fontFamily="@font/montserratblack"
+        android:textColor="#FFFFFF" />
+
+
+    <ImageButton
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="36dp"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        android:src="@drawable/play" />
+
+    <ImageButton
+        android:id="@+id/credit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="60dp"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        android:src="@drawable/credits" />
+
+</LinearLayout>
