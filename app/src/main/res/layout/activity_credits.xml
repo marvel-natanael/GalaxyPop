@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/logo" />
+        android:src="@drawable/logoapp" />
 
     <ImageButton
         android:id="@+id/back"
